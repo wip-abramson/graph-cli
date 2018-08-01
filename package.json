@@ -1,9 +1,11 @@
 {
-  "name": "graph-cli",
-  "version": "0.1.0",
+  "name": "@graphprotocol/graph-cli",
+  "version": "0.2.0",
   "description": "CLI for building for and deploying to The Graph",
+  "license": "(MIT OR Apache-2.0)",
   "dependencies": {
-    "assemblyscript": "https://github.com/AssemblyScript/assemblyscript#c4ebc8c291c1068da73ddf1a381eab93e1f69e11",
+    "assemblyscript":
+      "https://github.com/AssemblyScript/assemblyscript#c4ebc8c291c1068da73ddf1a381eab93e1f69e11",
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
     "debug": "^3.1.0",
