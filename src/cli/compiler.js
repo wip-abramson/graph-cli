@@ -67,11 +67,8 @@ class Compiler {
   }
 
   completed(ipfsHashOrPath) {
-    this.logger.info('')
     this.logger.status('Build completed')
-    this.logger.info('')
-    this.logger.info('%s %s', chalk.bold(chalk.blue('Subgraph:')), ipfsHashOrPath)
-    this.logger.info('')
+    this.logger.status(chalk.bold(chalk.blue('Subgraph:')), ipfsHashOrPath)
   }
 
   loadSubgraph() {
@@ -222,7 +219,8 @@ class Compiler {
       outputDir: this.buildDir,
       displayPath: this.displayPath.bind(this),
       logger: {
-        prefix: chalk.grey(' '),
+        prefix: this.options.verbosity == 'info' ? undefined : chalk.grey(' '),
+        verbosity: this.options.verbosity,
       },
     })
     return generator.generateTypes()
