@@ -75,7 +75,7 @@ class Compiler {
     try {
       return Subgraph.load(this.options.subgraphManifest)
     } catch (e) {
-      throw Error('Failed to load subgraph')
+      throw Error(`Failed to load subgraph: ${e}`)
     }
   }
 
@@ -99,7 +99,7 @@ class Compiler {
       // Make paths absolute
       return files.map(file => path.resolve(file))
     } catch (e) {
-      throw Error('Failed to parse subgraph file locations')
+      throw Error(`Failed to parse subgraph file locations: ${e}`)
     }
   }
 
@@ -145,7 +145,7 @@ class Compiler {
 
       return buildDir
     } catch (e) {
-      throw new Error('Failed to create build directory')
+      throw new Error(`Failed to create build directory: ${e}`)
     }
   }
 
@@ -187,7 +187,7 @@ class Compiler {
 
       return subgraph
     } catch (e) {
-      throw Error('Failed to copy subgraph files')
+      throw Error(`Failed to copy subgraph files: ${e}`)
     }
   }
 
@@ -257,7 +257,7 @@ class Compiler {
         )
       })
     } catch (e) {
-      throw Error('Failed to add types to runtime')
+      throw Error(`Failed to add types to runtime: ${e}`)
     }
   }
 
@@ -273,7 +273,7 @@ class Compiler {
         )
       })
     } catch (e) {
-      throw Error('Failed to add mapping to runtime')
+      throw Error(`Failed to add mapping to runtime: ${e}`)
     }
   }
 
@@ -285,7 +285,7 @@ class Compiler {
       )
       fs.mkdirsSync(this.options.outputDir)
     } catch (e) {
-      throw Error('Failed to create output directory')
+      throw Error(`Failed to create output directory: ${e}`)
     }
   }
 
@@ -303,7 +303,7 @@ class Compiler {
 
       return subgraph
     } catch (e) {
-      throw Error('Failed to compile subgraph')
+      throw Error(`Failed to compile subgraph: ${e}`)
     }
   }
 
@@ -345,7 +345,7 @@ class Compiler {
       )
       return outputFile
     } catch (e) {
-      throw Error('Failed to compile data source mapping')
+      throw Error(`Failed to compile data source mapping: ${e}`)
     }
   }
 
@@ -416,7 +416,7 @@ class Compiler {
 
       return subgraph
     } catch (e) {
-      throw Error('Failed to write compiled subgraph to output directory')
+      throw Error(`Failed to write compiled subgraph to output directory: ${e}`)
     }
   }
 
@@ -459,7 +459,7 @@ class Compiler {
       // Upload the subgraph itself
       return await this._uploadSubgraphDefinitionToIPFS(subgraph)
     } catch (e) {
-      throw new Error('Failed to upload subgraph to IPFS')
+      throw new Error(`Failed to upload subgraph to IPFS: ${e}`)
     }
   }
 
@@ -487,7 +487,7 @@ class Compiler {
       await this.ipfs.pin.add(hash)
       return hash
     } catch (e) {
-      throw Error('Failed to upload file to IPFS')
+      throw Error(`Failed to upload file to IPFS: ${e}`)
     }
   }
 }
