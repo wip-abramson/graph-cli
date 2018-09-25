@@ -16,7 +16,7 @@ class Compiler {
     this.options = options
     this.ipfs = options.ipfs
     this.sourceDir = path.dirname(options.subgraphManifest)
-    this.logger = new Logger(11, { verbosity: this.options.verbosity })
+    this.logger = new Logger(11, { verbosity: this.options.logger.verbosity })
 
     process.on('uncaughtException', function(e) {
       this.logger.error('UNCAUGHT EXCEPTION:', e)
@@ -219,8 +219,8 @@ class Compiler {
       outputDir: this.buildDir,
       displayPath: this.displayPath.bind(this),
       logger: {
-        prefix: this.options.verbosity == 'info' ? undefined : chalk.grey(' '),
-        verbosity: this.options.verbosity,
+        prefix: this.options.logger.verbosity == 'info' ? undefined : chalk.grey(' '),
+        verbosity: this.options.logger.verbosity,
       },
     })
     return generator.generateTypes()
