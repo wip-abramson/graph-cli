@@ -28,9 +28,9 @@ project. It is recommended to install `graph-cli` as a local dependency
 via `package.json` and use `npm` scripts for code generation and
 building.
 
-If you are just getting started with creating a subgraph, head to [The Getting Started Guide](https://github.com/graphprotocol/graph-node/blob/master/docs/getting-started.md). Eventually that guide will lead you back here.
+If you are just getting started with creating a subgraph, head to [getting started](https://github.com/graphprotocol/graph-node/blob/master/docs/getting-started.md). Eventually this guide will lead you back here.
 
-For clarity, an example of the setup below can be found in the [Ens subgraph repository](https://github.com/graphprotocol/ens-subgraph).
+For clarity, an example of the setup below can be found in the [ENS subgraph repository](https://github.com/graphprotocol/ens-subgraph).
 
 ### Steps 
 
@@ -63,7 +63,7 @@ For clarity, an example of the setup below can be found in the [Ens subgraph rep
     ```json
     {
       "scripts": {
-        "codegen": "graph generate-types subgraph.yaml",
+        "codegen": "graph codegen --output-dir types/ subgraph.yaml",
         "build": "graph build subgraph.yaml",
         "build-ipfs": "graph build --ipfs /ip4/127.0.0.1/tcp/5001 subgraph.yaml",
         "deploy":
@@ -74,15 +74,18 @@ For clarity, an example of the setup below can be found in the [Ens subgraph rep
     _Note: Replace the IP addresses and ports with any
     [Graph Node](https://github.com/graphprotocol/graph-node) you want
     to deploy the subgraph to._
-6.  Generate type definitions for contract ABIs used in the subgraph
+6.  Generate type definitions for contract ABIs used in the subgraph.
     with:
     ```bash
     yarn codegen
     ```
-7.  Develop your `mapping.ts` against these generated types. If you haven't developed your mappings yet, you can head to [The Getting Started Doc](https://github.com/graphprotocol/graph-node/blob/master/docs/getting-started.md#34-write-your-mappings). 
+    
+     This creates the `types/` folder. This folder does not need to be uploaded to GitHub, and the files within it should not be edited.
+    
+7.  Develop your `mapping.ts` against these generated types. If you are new to this process, you can head over to [getting started](https://github.com/graphprotocol/graph-node/blob/master/docs/getting-started.md#34-write-your-mappings) for a beginner friendly walkthrough of The Graph.
 8.  Build the subgraph with one of
     ```sh
-    yarn build      # Will drop the results in dist/
+    yarn build      # Will drop the results in types/
     yarn build-ipfs # Will also deploy to IPFS and output an IPFS hash
     ```
 9.  Deploy your subgraph to a
